@@ -2,7 +2,7 @@ import CartWidget from "../CartWidget/CartWidget"
 import "./NavBar.css"
 import { Link } from "react-router-dom"
 const NavBar = () => {
-    const array = ['Procesadores', 'Memorias_Ram', 'Discos']
+    const array = ['Procesadores', 'Memorias', 'Discos']
     return (
         <header>
             <nav>
@@ -10,7 +10,7 @@ const NavBar = () => {
                     <Link to='/'><img src="../src/assets/React.png" width="50px" alt="" /></Link>
                     {
                         array.map((a) => (
-                            <Link to={`/${a}`} key={a}>{a}</Link>
+                            <Link to={`/Categorias/${a}`} key={a}>{a}</Link>
                         ))
                     }
                     <CartWidget className="cartwidget"/>

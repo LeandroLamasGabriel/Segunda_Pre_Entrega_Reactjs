@@ -1,9 +1,8 @@
-import "./ItemListContainer.css"
-import { useState, useEffect } from "react"
-import Itemlist from "./ItemList"
-import { useParams } from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemDetail from './ItemDetail';
 
-function ItemListContainer() {
+function ItemDetailContainer() {
     const [items, setItems] = useState([])
     const { id } = useParams()
 
@@ -12,7 +11,7 @@ function ItemListContainer() {
             try {
                 const resp = await fetch("/datos.json")
                 const data = await resp.json()
-                setItems(data)
+                setItems(data.find(dato => dato.id == id))
             } catch (error) {
                 console.log("Error: " + error)
             }
@@ -20,9 +19,10 @@ function ItemListContainer() {
         pedirDatosAlBackend()
         
     }, [id])
-    
+
     return (
-        <Itemlist item={items}/>
+        <ItemDetail item={items}/>
     )
 }
-export default ItemListContainer
+
+export default ItemDetailContainer;
