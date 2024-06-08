@@ -6,12 +6,15 @@ function ItemDetailContainer() {
     const [items, setItems] = useState([])
     const { id } = useParams()
 
+    const idCategoria = () => {
+        id.slice(id.indexOf("-") + 1)
+    }
     useEffect(() => {
         async function pedirDatosAlBackend() {
             try {
                 const resp = await fetch("/datos.json")
                 const data = await resp.json()
-                setItems(data.find(dato => dato.id == id))
+                setItems(data.find(dato => dato.id == id || dato.id == id.slice(id.indexOf("-") + 1) ))
             } catch (error) {
                 console.log("Error: " + error)
             }

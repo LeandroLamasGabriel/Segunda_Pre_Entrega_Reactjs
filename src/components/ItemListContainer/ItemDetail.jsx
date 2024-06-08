@@ -8,7 +8,7 @@ function ItemDetail({item}) {
                 <h5 className="card-title text-center">{item.nombre}</h5>
                 <p className="card-text text-center">Precio: ${item.precio}</p>
                 <button className="text-center" style={{ display: 'flex' }}>
-                    <Link to={`/Productos/${item.id}`} className="btn btn-primary container" style={{  marginRight:'10px' }}>Agregar</Link>
+                    <Link to={`/Categorias/${item.id}`} className="btn btn-primary container" style={{  marginRight:'10px' }}>Agregar</Link>
                     <ItemCount initial={1} stock={item.stock} />
                 </button>
             </div>

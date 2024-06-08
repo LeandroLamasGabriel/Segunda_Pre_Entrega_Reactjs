@@ -9,7 +9,7 @@ function Categories(){
             try {
                 const resp = await fetch("/datos.json")
                 const data = await resp.json()
-                setItems(data.filter(dato => dato.categoria == id))
+                setItems(data.filter(dato => dato.categoria == id || dato.id == id))
             } catch (error) {
                 console.log("Error: " + error)
             }
@@ -17,7 +17,7 @@ function Categories(){
         pedirDatosAlBackend()
     },[id])
 
-    return <Itemlist item={items}/>
+    return <Itemlist item={items} categorie={true}/>
     
 }
 export default Categories
